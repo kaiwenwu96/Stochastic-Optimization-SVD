@@ -63,7 +63,7 @@ def sgd(X, w0 = None, eta = 0.01, epochs = 1):
 	w_list.append(w)
 
 	for i in range(epochs):
-		for j in range(d):
+		for j in range(n):
 			it = np.random.choice(n)
 
 			x = X[:, it].reshape((d, 1))
@@ -92,7 +92,7 @@ def svrg(X, w0 = None, eta = 0.01, epochs = 1):
 		u = 1.0 / n * np.dot(X, np.dot(X.T, ws))
 		wt = ws
 		
-		for j in range(d):
+		for j in range(n):
 			it = np.random.choice(n)
 
 			x = X[:, it].reshape((d, 1))
