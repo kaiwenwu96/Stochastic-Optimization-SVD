@@ -1,1 +1,1 @@
-please read me
+Implementation of several optimization procedures (GD, SGD and SVRG) to compute SVD.
