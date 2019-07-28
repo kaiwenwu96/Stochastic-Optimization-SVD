@@ -12,17 +12,16 @@ def plot_obj_curve(X, w_list, plot = True):
 	obj_list = []
 
 	for i in range(len(w_list)):
-		obj = - fval(X, w_list[i])
+		obj = fval(X, w_list[i])
 
 		obj_list.append(obj)
 
 	if plot == True:
 		fig = plt.figure()
 		plt.plot(obj_list)
-		plt.yscale(value = 'symlog')
 
 	return obj_list
-	
+
 def plot_mse_curve(u, w_list):
 	error_list = []
 
