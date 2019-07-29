@@ -4,12 +4,12 @@ from utils import *
 
 if __name__ == '__main__':
 	d = 1000
-	n = 20000
+	n = 10000
 
 	X = np.random.randn(d, n)
 
-	# X = MNIST()
-	# X = X / 255
+	X = MNIST()
+	X = X / 255
 
 	d, n = X.shape 
 
@@ -29,15 +29,21 @@ if __name__ == '__main__':
 	power_val_list = plot_obj_curve(X, w_list, plot = False)
 
 	# gradient descent
-	w, w_list = gd(X, eta = 0.01, epochs = epochs)
+	eta = 2.0 / eigen_value
+	print('GD eta = %f' % eta)
+
+	w, w_list = gd(X, eta = eta, epochs = epochs)
 
 	print('GD eigen value = %f' % fval(X, w))
 	gd_val_list = plot_obj_curve(X, w_list, plot = False)
 
 	# stochastic gradient descent
-	w, w_list = sgd(X, eta = 0.5, epochs = epochs)
+	eta = 2.0 * 2.0 / eigen_value
+	print('SGD eta = %f' % eta)
 
-	print('SGD final eigen value = %f' % fval(X, w))
+	w, w_list = sgd(X, eta = eta, epochs = epochs)
+
+	print('SGD eigen value = %f' % fval(X, w))
 	sgd_val_list = plot_obj_curve(X, w_list, plot = False)
 
 	# svrg
@@ -48,7 +54,7 @@ if __name__ == '__main__':
 
 	w, w_list = svrg(X, eta = eta, epochs = epochs)
 
-	print('SVRG final eigen value %f' % fval(X, w))
+	print('SVRG eigen value %f' % fval(X, w))
 	svrg_val_list = plot_obj_curve(X, w_list, plot = False)
 
 	fig = plt.figure()

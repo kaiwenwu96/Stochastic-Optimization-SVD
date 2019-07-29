@@ -3,9 +3,9 @@ import numpy as np
 def powerIteration(X, w0 = None, epochs = 1):
 	d, n = X.shape
 
-	A = np.dot(X, X.T)
+	# A = np.dot(X, X.T)
 
-	A = A / n
+	# A = A / n
 
 	if w0 != None:
 		w = w0
@@ -17,7 +17,8 @@ def powerIteration(X, w0 = None, epochs = 1):
 	w_list.append(w)
 
 	for i in range(epochs):
-		w = np.dot(A, w)
+		# w = np.dot(A, w)
+		w = 1.0 / n * np.dot(X, np.dot(X.T, w))
 
 		w = w / np.linalg.norm(w)
 
@@ -28,9 +29,9 @@ def powerIteration(X, w0 = None, epochs = 1):
 def gd(X, w0 = None, eta = 0.01, epochs = 1):
 	d, n = X.shape
 
-	A = np.dot(X, X.T)
+	# A = np.dot(X, X.T)
 
-	A = A / n
+	# A = A / n
 
 	if w0 != None:
 		w = w0
@@ -42,7 +43,8 @@ def gd(X, w0 = None, eta = 0.01, epochs = 1):
 	w_list.append(w)
 
 	for i in range(epochs):
-		w = w + eta * np.dot(A, w)
+		# w = w + eta * np.dot(A, w)
+		w = w + eta / n * np.dot(X, np.dot(X.T, w))
 
 		w = w / np.linalg.norm(w)
 

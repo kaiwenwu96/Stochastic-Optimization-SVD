@@ -46,9 +46,9 @@ def MNIST():
 def fval(X, w):
 	d, n = X.shape
 
-	A = np.dot(X, X.T)
+	# A = np.dot(X, X.T)
 
-	return np.dot(np.dot(w.T, A), w).item() / n
+	return np.linalg.norm(np.dot(X.T, w).squeeze()).item() ** 2 / n
 
 def plot_obj_curve(X, w_list, plot = True):
 	obj_list = []
