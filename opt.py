@@ -101,8 +101,6 @@ def svrg(X, w0 = None, eta = 0.01, epochs = 1):
 
 			wt = wt + eta * (x * (np.dot(x.T, wt) - np.dot(x.T, ws)) + u) 
 
-			# print(wt)
-
 			wt = wt / np.linalg.norm(wt)
 		
 		ws = wt
